@@ -22,14 +22,6 @@ async def on_ready():
     print(f"{bot.user} ist nun Hochgefahren!")
 
 
-@bot.slash_command(description="Lass den Bot eine wichtige Ankündigung senden")
-async def announce(
-        ctx,
-        text: Option(str, "Die Ankündigung, die du machen möchtest"),
-        channel: Option(discord.TextChannel)
-):
-    await channel.send(text)
-    await ctx.respond("Die Ankündigung wurde gesendet", ephemeral=True)
 
 
 
