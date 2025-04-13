@@ -11,7 +11,7 @@ intents.message_content = True
 
 bot = discord.Bot(
     intents=intents,
-    debug_guilds=[1155564626050826394]
+    debug_guilds=None
 )
 
 @bot.event

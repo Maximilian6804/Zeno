@@ -8,21 +8,26 @@ class Kick(commands.Cog):
 
     @slash_command(description="Kicke einen User!")
     @commands.has_role("Dev")
-    async def kick(self, ctx, member: Option(discord.Member, "Wähle den User")):
+    async def kick(
+        self,
+        ctx,
+        member: Option(discord.Member, "Wähle den User"),
+        grund: Option(str, "Gib den Grund für den Kick ein")
+    ):
         try:
-            await member.kick()
+            await member.kick(reason=grund)
         except discord.Forbidden:
-            await ctx.respond("```Ich habe keine Berechtigung, um diesen User zu kicken!```", )
+            await ctx.respond("```Ich habe keine Berechtigung, um diesen User zu kicken!```")
             return
-        await ctx.respond(f"{member.mention} wurde gekickt")
+        await ctx.respond(f"{member.mention} wurde gekickt.\n**Grund:** {grund}")
 
-#nicht anfassen sonst bot kaputt!
-    #@commands.Cog.listener()
-    #async def on_application_command_error(self, ctx, error):
-        #await ctx.respond(f"Es ist ein Fehler aufgetreten: ```{error}```", ephemeral=True)
-        #raise error
-
-
+    @commands.Cog.listener()
+    async def on_application_command_error(self, ctx, error):
+        if isinstance(error, commands.MissingRole):
+            await ctx.respond("```Du hast keine Berechtigung, diesen Befehl zu verwenden!```", ephemeral=True)
+        else:
+            await ctx.respond(f"Es ist ein Fehler aufgetreten: ```{error}```", ephemeral=True)
+            raise error  # Optional: nur zum Debuggen
 
 def setup(bot):
     bot.add_cog(Kick(bot))
