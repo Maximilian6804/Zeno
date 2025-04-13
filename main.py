@@ -14,6 +14,7 @@ bot = discord.Bot(
     debug_guilds=None
 )
 
+
 @bot.event
 async def on_ready():
     print(f"{bot.user} ist nun Hochgefahren!")
