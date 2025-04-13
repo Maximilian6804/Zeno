@@ -1,7 +1,6 @@
 import os
 
 import discord
-from discord.commands import slash_command, Option
 from dotenv import load_dotenv
 
 
@@ -41,7 +40,9 @@ if __name__ == "__main__":
                 if filename.endswith('.py'):
                     bot.load_extension(f'{category}.{filename[:-3]}')
 
-                
+
+load_dotenv()
+
 token = os.getenv("TOKEN")
 if not token:
     print("Fehler: TOKEN wurde nicht geladen. Überprüfe deine .env-Datei!")
