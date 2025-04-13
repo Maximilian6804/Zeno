@@ -1,6 +1,7 @@
 import os
 
 import discord
+from discord.commands import Option
 from dotenv import load_dotenv
 
 
@@ -13,7 +14,7 @@ intents.message_content = True
 
 bot = discord.Bot(
     intents=intents,
-    debug_guilds=None
+    debug_guilds=[1155564626050826394]
 )
 
 @bot.event
