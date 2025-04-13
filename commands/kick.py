@@ -16,10 +16,11 @@ class Kick(commands.Cog):
             return
         await ctx.respond(f"{member.mention} wurde gekickt")
 
-    @commands.Cog.listener()
-    async def on_application_command_error(self, ctx, error):
-        await ctx.respond(f"Es ist ein Fehler aufgetreten: ```{error}```", ephemeral=True)
-        raise error
+#nicht anfassen sonst bot kaputt!
+    #@commands.Cog.listener()
+    #async def on_application_command_error(self, ctx, error):
+        #await ctx.respond(f"Es ist ein Fehler aufgetreten: ```{error}```", ephemeral=True)
+        #raise error
 
 
 
