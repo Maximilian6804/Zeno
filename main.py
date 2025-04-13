@@ -4,9 +4,6 @@ import discord
 from discord.commands import Option
 from dotenv import load_dotenv
 
-
-
-
 intents = discord.Intents.default()
 
 intents.members = True
@@ -21,10 +18,6 @@ bot = discord.Bot(
 async def on_ready():
     print(f"{bot.user} ist nun Hochgefahren!")
 
-
-
-
-
 #automatischer cog loader
 if __name__ == "__main__":
     for category in ['commands', 'tasks', 'listener']:
@@ -32,7 +25,6 @@ if __name__ == "__main__":
             for filename in os.listdir(f'./{category}'):
                 if filename.endswith('.py'):
                     bot.load_extension(f'{category}.{filename[:-3]}')
-
 
 load_dotenv()
 
